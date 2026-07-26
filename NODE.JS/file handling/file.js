@@ -67,3 +67,6 @@ fs.stat("sync",(err,res)=>{
     else{console.log(res)}
 
 })
+
+const os = require("os");
+console.log(os.cpus().length)
