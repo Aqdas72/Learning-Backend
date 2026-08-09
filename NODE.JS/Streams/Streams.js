@@ -15,7 +15,7 @@ const server = http.createServer((req,res)=>{
     //? <-----2----->
     const readable = fs.createReadStream("Sample.txt");
     const writeable = fs.createWriteStream("Output.txt");
-    readable.pipe(writeable);
+    readable.pipe(writeable); // copy Sample.txt --> Output.txt
 
     readable.on("data", (chunk) => {
         console.log(chunk);

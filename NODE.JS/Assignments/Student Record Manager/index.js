@@ -1,5 +1,6 @@
 const fs = require('fs');
-const StudentData = "student.json";
+const path = require('path');
+const StudentData = path.join(__dirname, "student.json");
 
 function loadfile(){
     try{
@@ -8,7 +9,7 @@ function loadfile(){
             const json = JSON.parse(ReadData); //convert the json into js object
             if (!Array.isArray(json)) { // Check if the parsed data is an array
                 return [];
-        }
+            }
 
         return json;
         }
