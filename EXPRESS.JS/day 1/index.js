@@ -130,9 +130,6 @@ app.delete("/users/:id",(req,res)=>{
         //splice(StartIndex,Deletecount(how many element to delete))
     })
 })
-
-
-
 app.listen(port, () => {
     console.log(`Server is running on ${port}`);
 });
