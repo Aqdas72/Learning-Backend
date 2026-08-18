@@ -6,7 +6,6 @@ const router = express.Router();
 // *Generate - Token
 router.get("/generate-Token",(req,res)=>{
     const token = generateToken();
-
     res.status(200).send({
         message:"Token is Generated",
         token:token
