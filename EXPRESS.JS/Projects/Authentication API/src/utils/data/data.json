@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1787671486801,
+    "name": "Aqdas",
+    "email": "aqdas@example.com",
+    "password": "$2b$10$lDdakqDHXfg3FLL7mELKkuHWxmFuYbycf.PJofQeVHjlzSkh8ZO6W",
+    "token": "5544315771967f092e5fee5d460dd1a0d5ef84836b4254a41d73af06e4c94102"
+  },
+  {
+    "id": 1787849689625,
+    "name": "Ayan",
+    "email": "ayan@example.com",
+    "password": "$2b$10$idDfqONXH6OdpvBKVyUsSeyD0FO3zUpk/UdIElvi7HhrZ9sEFuvuK",
+    "token": null
+  }
+]
