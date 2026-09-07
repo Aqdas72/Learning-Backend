@@ -32,4 +32,4 @@ db.<collection_name>.insertOne({});
 
 db.<collection_name>.insertMany([]);
 
-//*
+//* 
