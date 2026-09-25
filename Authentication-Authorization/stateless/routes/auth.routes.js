@@ -9,7 +9,7 @@ const routes = express.Router();
 
 //* signup
 routes.post("/signup",async(req,res)=>{
-    const {username,password} = req.body;
+    const {username,password,role} = req.body;
 
     try {
         const existingUser = await User.findOne({username})
@@ -22,7 +22,7 @@ routes.post("/signup",async(req,res)=>{
         }
 
 
-        const newUser = await User.create({username,password});
+        const newUser = await User.create({username,password,role});
 
         newUser.save();
 
@@ -58,7 +58,7 @@ routes.post("/login",async(req,res)=>{
         if(!isMatch) return res.status(400).json({message:"Invalid username or password"});
 
         //? creating jwt tokens
-        const token = jwt.sign({id:user._id,username:user.username}, process.env.JWT_SECRET,
+        const token = jwt.sign({id:user._id,username:user.username,role:user.role}, process.env.JWT_SECRET,
             {expiresIn:"1h"}
         );
 
