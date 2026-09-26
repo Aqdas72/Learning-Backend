@@ -3,9 +3,14 @@ import bcrypt from "bcrypt"
 
 //schema for user buyer and seller
 const userSchema = new mongoose.Schema({
-    username:{
+    name:{
         type:String,
         required:true
+    },
+    email:{
+        type:String,
+        required:true,
+        unique:true
     },
     password:{
         type:String,
@@ -13,7 +18,7 @@ const userSchema = new mongoose.Schema({
     },
     role:{
         type:String,
-        ename:["user","seller","admin"],
+        enum:["user","seller","admin"],
         default:"user"
     }
 })
@@ -24,6 +29,4 @@ userSchema.pre("save",async function(){
     this.password = await bcrypt.hash(this.password,10)
 })
 
-
-
-export default mongoose.model("Ecommerce",userSchema);
+export default mongoose.model("User",userSchema);
