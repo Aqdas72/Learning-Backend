@@ -96,7 +96,7 @@ routes.get("/products",authenticateSession,async(req,res)=>{
 
 //* User deletion
 routes.delete("/users/:id",authenticateSession,async(req,res)=>{
-    const {id} = req.body;
+    const {id} = req.params;
     try {
         const deleteUser = await User.findByIdAndDelete(id);
         res.status(200).json({
@@ -111,12 +111,12 @@ routes.delete("/users/:id",authenticateSession,async(req,res)=>{
 })
 
 //* product deletion
-routes.delete("/product/:id",async(req,res)=>{
-    const {id} = req.body;
+routes.delete("/products/:id",async(req,res)=>{
+    const {id} = req.params;
     try {
         const deleteProduct = await Product.findByIdAndDelete(id);
         res.status(200).json({
-            message:"User Deleted Successfuly",
+            message:"Product Deleted Successfuly",
             DeletedProduct:deleteProduct
         })
     } catch (error) {

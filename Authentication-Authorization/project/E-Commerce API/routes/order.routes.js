@@ -36,7 +36,7 @@ routes.get("/products",authenticateJWT,authorizeRole("user"),async(req,res)=>{
 routes.get("/products/:id",authenticateJWT,authorizeRole("user"),async(req,res)=>{
     const {id} = req.params;
     try {
-        const product = await Products.findOne({id});
+        const product = await Products.findById(id);
         if(!product){
             return res.status(404).json({
                 message:"Invalid Product Id"
@@ -80,7 +80,7 @@ routes.post("/",authenticateJWT,authorizeRole("user","admin","seller"),async(req
 //* get my order
 routes.get("/my",authenticateJWT,authorizeRole("user"),async(req,res)=>{
     try {
-        const myOrders = await Order.find({userId});
+        const myOrders = await Order.find({userId:req.user.userId});
         if(!myOrders){
             return res.status(404).json({
                 message:"No Orders"

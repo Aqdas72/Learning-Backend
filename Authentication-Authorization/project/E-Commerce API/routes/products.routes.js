@@ -1,6 +1,8 @@
 import express from "express";
-import { authorizeRole } from "../middleware/authorizeRole.js";
+
 import Product from "../models/products.model.js"
+import { checkOwnership } from "../middleware/checkOwnership.js";
+import { authorizeRole } from "../middleware/authorizeRole.js";
 import { authenticateJWT } from "../middleware/authenticateJWT.js";
 
 const routes = express.Router();
@@ -65,7 +67,7 @@ routes.get("/seller/",authenticateJWT,authorizeRole("seller"),async (req,res)=>{
 })
 
 //* Update products
-routes.patch("/:id",authenticateJWT,authorizeRole("seller"),async(req,res)=>{
+routes.patch("/:id",authenticateJWT,authorizeRole("seller"),checkOwnership,async(req,res)=>{
     const {id} = req.params;
     try {
         const product = await Product.findByIdAndUpdate(id,req.body);
@@ -88,7 +90,7 @@ routes.patch("/:id",authenticateJWT,authorizeRole("seller"),async(req,res)=>{
 })
 
 //* Delete products
-routes.delete("/:id",authenticateJWT,authorizeRole("seller"),async(req,res)=>{
+routes.delete("/:id",authenticateJWT,authorizeRole("seller"),checkOwnership,async(req,res)=>{
     const {id} = req.params;
     try {
         const deletedProduct = await Product.findByIdAndDelete(id);

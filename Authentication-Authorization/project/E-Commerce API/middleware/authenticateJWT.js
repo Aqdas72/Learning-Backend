@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken"
 
 export const authenticateJWT = async (req, res, next) => {
     const token = req.cookies.accessToken;
+    console.log(token)
     if(!token){
         return res.status(401).json({
             message:"Access denied. Please login or signup"
